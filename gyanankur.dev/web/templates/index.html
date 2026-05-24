@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="description" content="Gyanankur Dey — Software Engineer building scalable backends, low-latency systems, and enterprise device platforms.">
+  <meta name="author" content="Gyanankur Dey">
+  <title>{{.Name}} · gyanankur.dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="gh-theme intro-open">
+  <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Welcome to gyanankur.dev">
+    <div class="intro-backdrop"></div>
+    <button type="button" class="intro-card" id="intro-enter" aria-label="Enter portfolio">
+      <p class="intro-domain">gyanankur<span>.dev</span></p>
+      <h1 class="intro-title">Check Gyanankur&rsquo;s work</h1>
+      <p class="intro-subtitle">Backend engineer · AI-augmented delivery · Scalable Systems</p>
+      <span class="intro-cta">Tap to explore</span>
+      <span class="intro-hint">or press Enter</span>
+    </button>
+  </div>
+
+  <div class="bg-gradient"></div>
+  <div class="bg-glow bg-glow-accent"></div>
+
+  <nav class="nav" id="nav">
+    <a href="#home" class="nav-logo">gyanankur<span>.dev</span></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" data-section="about">About</a></li>
+      <li><a href="#experience" data-section="experience">Experience</a></li>
+      <li><a href="#projects" data-section="projects">Projects</a></li>
+      <li><a href="#skills" data-section="skills">Skills</a></li>
+      <li><a href="#contact" data-section="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">{{.Name}}</h1>
+      <p class="hero-title">{{.Title}}</p>
+      <p class="hero-tagline">{{.Tagline}}</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number stat-violet">3+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number stat-cyan">15+</span>
+          <span class="stat-label">Projects Shipped</span>
+        </div>
+      </div>
+      <div class="core-stack">
+        <p class="core-stack-label">Major Tech Stack</p>
+        <ul class="tech-list tech-list-hero">
+          {{range $tech := .CoreStack}}
+          {{template "tech-item" (techBadge $tech)}}
+          {{end}}
+        </ul>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-panel">
+        <div class="hero-panel-header">
+          <span class="hero-panel-icon" aria-hidden="true">#</span>
+          <span>At a glance</span>
+        </div>
+        <div class="hero-panel-body">
+          <ul class="hero-panel-list">
+            <li>Enterprise device platforms — MDM, EMM &amp; policy backends</li>
+            <li>Low-latency C++ systems for high-frequency trading</li>
+            <li>Core NFS storage &amp; ESXi at VMware scale</li>
+            <li>AI-augmented workflow — Cursor, Copilot &amp; Gemini daily</li>
+          </ul>
+          <div class="hero-panel-metrics">
+            <div class="hero-metric">
+              <span class="hero-metric-value">15+</span>
+              <span class="hero-metric-label">Features shipped</span>
+            </div>
+            <div class="hero-metric">
+              <span class="hero-metric-value">3</span>
+              <span class="hero-metric-label">Industries worked in</span>
+            </div>
+          </div>
+          <div class="hero-panel-path">
+            <span class="path-label">Career path</span>
+            <p class="path-items">
+              <span>VMware</span>
+              <span class="path-arrow">→</span>
+              <span>Symphony</span>
+              <span class="path-arrow">→</span>
+              <span class="path-active">JumpCloud</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title"><span class="section-number">01</span> About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a software engineer passionate about building systems that scale — from
+            enterprise device management platforms at <strong class="highlight-jc">JumpCloud</strong> to
+            microsecond-sensitive trading infrastructure at <strong class="highlight-sym">Symphony Fintech</strong>
+            and core storage at <strong class="highlight-vm">VMware</strong>.
+          </p>
+          <p>
+            I specialize in backend development with <strong class="highlight-go">Golang</strong>, low-latency
+            <strong class="highlight-cpp">C++</strong> systems, and cloud-native architectures. I love solving
+            hard performance problems and shipping features that real enterprise customers depend on.
+          </p>
+          <div class="ai-callout">
+            <span class="ai-chip">AI workflow</span>
+            <p>I use <strong>Cursor</strong>, <strong>GitHub Copilot</strong>, and <strong>Google Gemini</strong> daily — for design drafts, boilerplate, debugging, and faster reviews — without compromising production quality.</p>
+          </div>
+        </div>
+        <div class="about-card">
+          <h3>Education</h3>
+          <p class="about-degree">{{.Education.Degree}}</p>
+          <p class="about-school">{{.Education.School}}</p>
+          <p class="about-period">{{.Education.Period}}</p>
+        </div>
+      </div>
+
+      {{template "contrib-block" .Activity}}
+
+    </div>
+  </section>
+
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <h2 class="section-title"><span class="section-number">02</span> Experience</h2>
+      <p class="section-subtitle">Three industries — device management, fintech, and storage — with AI tooling woven into each role.</p>
+      <div class="timeline">
+        {{range .Experience}}
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>{{.Role}}</h3>
+              <span class="timeline-company">{{.Company}}</span>
+              <span class="timeline-period">{{.Period}}</span>
+            </div>
+            <ul class="timeline-highlights">
+              {{range .Highlights}}
+              <li>{{.}}</li>
+              {{end}}
+            </ul>
+          </div>
+        </div>
+        {{end}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section-title"><span class="section-number">03</span> Projects</h2>
+      <p class="section-subtitle">Production systems shipped across device management, fintech, and storage — pick a company to see what I built there.</p>
+
+      <div class="projects-tabs" role="tablist" aria-label="Projects by company">
+        {{range .ProjectGroups}}
+        <button type="button" role="tab" class="projects-tab projects-tab-{{.Theme}}{{if eq .Slug "jumpcloud"}} is-active{{end}}" id="projects-tab-{{.Slug}}" data-company="{{.Slug}}" aria-selected="{{if eq .Slug "jumpcloud"}}true{{else}}false{{end}}" aria-controls="projects-panel-{{.Slug}}">{{.Company}}</button>
+        {{end}}
+      </div>
+
+      <p class="projects-prompt is-hidden" id="projects-prompt">Select a company above to view projects.</p>
+
+      <div class="projects-panels">
+      {{range .ProjectGroups}}
+      <div class="company-projects company-projects-{{.Theme}}" id="projects-panel-{{.Slug}}" role="tabpanel" aria-labelledby="projects-tab-{{.Slug}}"{{if ne .Slug "jumpcloud"}} hidden{{end}}>
+        <header class="company-projects-header">
+          <div>
+            <h3 class="company-projects-name">{{.Company}}</h3>
+            <p class="company-projects-meta">{{.Period}} · {{.Tagline}}</p>
+          </div>
+          <span class="company-projects-count">{{len .Projects}} projects</span>
+        </header>
+        {{if .AIUsage}}
+        <div class="ai-callout ai-callout-company company-ai-{{.Theme}}">
+          <span class="ai-chip">AI at {{.Company}}</span>
+          <p>{{.AIUsage}}</p>
+        </div>
+        {{end}}
+        <div class="project-list">
+          {{range .Projects}}
+          {{template "project-row" .}}
+          {{end}}
+        </div>
+      </div>
+      {{end}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <h2 class="section-title"><span class="section-number">04</span> Skills &amp; Tools</h2>
+      <p class="section-subtitle">Languages, databases, infrastructure — plus the AI tools I use alongside them every day.</p>
+      <ul class="tech-list tech-list-grid">
+        {{range $skill := .Skills}}
+        {{template "tech-item" (techBadge $skill)}}
+        {{end}}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title"><span class="section-number">05</span> Contact</h2>
+      <div class="contact-card">
+        <p class="contact-text">Interested in collaborating or just want to say hi? I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:{{.Email}}" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            {{.Email}}
+          </a>
+          <a href="tel:{{.Phone}}" class="contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {{.Phone}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-domain">gyanankur.dev</p>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>

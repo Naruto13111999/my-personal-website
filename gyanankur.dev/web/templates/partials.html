@@ -1,0 +1,89 @@
+{{define "tech-item"}}
+<li class="tech-item" style="--tech-color: {{.Color}}">
+  <span class="tech-icon-wrap">
+    {{if .Icon}}
+    <img src="{{.Icon}}" alt="{{.Name}} logo" class="tech-icon" loading="lazy">
+    {{else}}
+    <span class="tech-icon-fallback">{{initial .Name}}</span>
+    {{end}}
+  </span>
+  <span class="tech-name">{{.Name}}</span>
+</li>
+{{end}}
+
+{{define "contrib-block"}}
+<div class="contrib-card reveal">
+  <div class="contrib-header">
+    <div>
+      <h3 class="contrib-title">{{if .Label}}{{.Label}}{{else}}Development Activity{{end}}</h3>
+      <p class="contrib-subtitle"><strong>{{.Total}}</strong> contributions in the last year</p>
+    </div>
+  </div>
+  <div class="contrib-scroll">
+    <div class="contrib-layout">
+      <div class="contrib-weekdays" aria-hidden="true">
+        <span>Mon</span>
+        <span>Wed</span>
+        <span>Fri</span>
+      </div>
+      <div class="contrib-graph">
+        <div class="contrib-months" style="--weeks: {{len .Weeks}}">
+          {{range .MonthLabels}}
+          <span class="contrib-month" style="--col: {{.Index}}">{{.Name}}</span>
+          {{end}}
+        </div>
+        <div class="contrib-grid">
+          {{range .Weeks}}
+          <div class="contrib-week">
+            {{range .Days}}
+            {{if .Date}}
+            <span class="contrib-day level-{{.Level}}" title="{{.Count}} contributions on {{.Label}}"></span>
+            {{else}}
+            <span class="contrib-day level-0 contrib-day-empty"></span>
+            {{end}}
+            {{end}}
+          </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contrib-footer">
+    <span class="contrib-note">{{if .Note}}{{.Note}}{{else}}Features shipped, code reviews &amp; production support{{end}}</span>
+    <div class="contrib-legend" aria-hidden="true">
+      <span>Less</span>
+      <span class="contrib-day level-0"></span>
+      <span class="contrib-day level-1"></span>
+      <span class="contrib-day level-2"></span>
+      <span class="contrib-day level-3"></span>
+      <span class="contrib-day level-4"></span>
+      <span>More</span>
+    </div>
+  </div>
+</div>
+{{end}}
+
+{{define "project-row"}}
+<article class="project-row project-row-{{if eq .Company "JumpCloud"}}jc{{else if eq .Company "Symphony Fintech"}}sym{{else}}vm{{end}}{{if .Featured}} is-spotlight{{end}}">
+  <div class="project-row-main">
+    <div class="project-row-top">
+      <h4 class="project-row-title">{{.Title}}</h4>
+      <span class="project-type project-type-{{if eq .Type "New Feature"}}new{{else}}enhance{{end}}">{{.Type}}</span>
+    </div>
+    <p class="project-row-hook">{{.Highlight}}</p>
+    <p class="project-row-desc">{{.Description}}</p>
+    {{if .AIUsage}}
+    <p class="project-row-ai"><span class="ai-chip">AI</span> {{.AIUsage}}</p>
+    {{end}}
+    <ul class="tech-list tech-list-compact">
+      {{range $tech := .Tech}}
+      {{template "tech-item" (techBadge $tech)}}
+      {{end}}
+    </ul>
+  </div>
+  <aside class="project-row-impact">
+    <span class="project-impact-label">Impact</span>
+    <p>{{.Impact}}</p>
+  </aside>
+</article>
+{{end}}
